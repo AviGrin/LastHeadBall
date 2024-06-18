@@ -123,6 +123,11 @@ public class Player2 extends JComponent implements Runnable {
         }
 
     }
+    public void setGoalLocation(){
+        location.setX(60);
+        centerOfTheHead.setX(centerOfTheHead.getX()+50);
+
+    }
 
     private class TAdapter extends KeyAdapter {
         @Override

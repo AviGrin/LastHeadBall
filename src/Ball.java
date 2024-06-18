@@ -41,30 +41,24 @@ public class Ball extends JComponent implements Runnable {
     }
 
     private void moveBall() {
+        if(xVelocity>10){
+            xVelocity=10;
+        }
+        if(yVelocity>10){
+            yVelocity=10;
+        }
         yVelocity += gravity; // עדכון מהירות הכדור בהתחשב בכוח המשיכה
         x += xVelocity;
         center.setX((int)x+15);
         y += yVelocity;
         center.setY((int)y+15);
-        if(xVelocity>15){
-            xVelocity=15;
+        if(xVelocity>10){
+            xVelocity=10;
         }
-        if(yVelocity>15){
-            yVelocity=15;
+        if(yVelocity>10){
+            yVelocity=10;
         }
-// התנגשות עם הקיר מעל השער השמאלי
-//        if((x <= 100)&&y<=235-120){
-//            xVelocity = -xVelocity * elasticity;// הכדור קופץ חזרה בהתאם לגמישות
-//            x = 100;
-//            center.setX((int)x+15);
-//
-//        }
-//        // התנגשות עם הקיר מעל השער הימני
-//        if((x>=800 - diameter-100)&&y<=120 ){
-//            xVelocity = -xVelocity * elasticity*0.3;// הכדור קופץ חזרה בהתאם לגמישות
-//            x =800 - diameter-100;
-//            center.setX((int)x+15);
-//        }
+
 
 //         בדיקת התנגשות עם גבולות המסך
         if (x <= 40 || x >= 786 - diameter-40) {
@@ -78,7 +72,7 @@ public class Ball extends JComponent implements Runnable {
 
             }
         }
-        if ((x <= 110&&y<=120) || (x >= 786 - diameter-110&&y<=120)) {
+        if ((x <= 110&&y<=110) || (x >= 786 - diameter-110&&y<=110)) {
             xVelocity = -xVelocity * elasticity; // הכדור קופץ חזרה בהתאם לגמישות
             if (x <= 110) {
                 x = 110;
@@ -268,118 +262,7 @@ public class Ball extends JComponent implements Runnable {
                 }
             }
         }
-//        // בדיקת התנגשות בplayer1
-//        //בדיקת התנגשות בגוף בצד ימין
-//        boolean isThereCollision=false;
-//        Point temp;
-//        for(int i=0;i<30;i++){
-//            temp=new Point(gamePanel.getPlayer1().getUpperRight().getX(),gamePanel.getPlayer1().getUpperRight().getY()+i);
-//            if(temp.distance(center)<=15)
-//            {isThereCollision = true;}
-//
-//            if(i<15) {
-//                temp = new Point(gamePanel.getPlayer1().getUpperRight().getX() - i, gamePanel.getPlayer1().getUpperRight().getY());
-//                if(temp.distance(center)<=15)
-//                { isThereCollision = true;}
-//                temp = new Point(gamePanel.getPlayer1().getUpperRight().getX() - i, gamePanel.getPlayer1().getUpperRight().getY()+30);
-//                if(temp.distance(center)<=15)
-//                { isThereCollision = true;}
-//
-//            }
-//        }
-//        if(isThereCollision)
-//        {
-//            x=gamePanel.getPlayer1().getUpperRight().getX()+diameter;
-//            center.setX((int)x+15);
-//            xVelocity=5;
-//            yVelocity=-10;
-//        }
-//        isThereCollision=false;
-//        //בדיקת התנגשות בגוף בצד שמאל
-//        for(int i=0;i<30;i++){
-//            temp=new Point(gamePanel.getPlayer1().getLowerLeft().getX(),gamePanel.getPlayer1().getLowerLeft().getY()-i);
-//            if(temp.distance(center)<=15)
-//            {isThereCollision = true;}
-//
-//            if(i<15) {
-//                temp = new Point(gamePanel.getPlayer1().getLowerLeft().getX() + i, gamePanel.getPlayer1().getLowerLeft().getY());
-//                if(temp.distance(center)<=15)
-//                { isThereCollision = true;}
-//                temp = new Point(gamePanel.getPlayer1().getLowerLeft().getX() - i, gamePanel.getPlayer1().getLowerLeft().getY()-30);
-//                if(temp.distance(center)<=15)
-//                { isThereCollision = true;}
-//
-//            }
-//        }
-//        if(isThereCollision){
-//            x=gamePanel.getPlayer1().getLowerLeft().getX();
-//            center.setX((int)x+15);
-//            xVelocity=-5;
-//            yVelocity=2;
-//        }
-//        // בדיקת התנגשות בplayer2
-//        //בדיקת התנגשות בגוף בצד ימין
-//        isThereCollision=false;
-//        for(int i=0;i<30;i++){
-//            temp=new Point(gamePanel.getPlayer2().getUpperRight().getX(),gamePanel.getPlayer2().getUpperRight().getY()+i);
-//            if(temp.distance(center)<=15)
-//            {isThereCollision = true;}
-//
-//            if(i<15) {
-//                temp = new Point(gamePanel.getPlayer2().getUpperRight().getX() - i, gamePanel.getPlayer2().getUpperRight().getY());
-//                if(temp.distance(center)<=15)
-//                { isThereCollision = true;}
-//                temp = new Point(gamePanel.getPlayer2().getUpperRight().getX() - i, gamePanel.getPlayer2().getUpperRight().getY()+30);
-//                if(temp.distance(center)<=15)
-//                { isThereCollision = true;}
-//
-//            }
-//        }
-//        if(isThereCollision)
-//        {
-//            x=gamePanel.getPlayer2().getUpperRight().getX()+diameter+1;
-//            center.setX((int)x+15);
-//            xVelocity=5;
-//            yVelocity=-10;
-//        }
-//        isThereCollision=false;
-//        //בדיקת התנגשות בגוף בצד שמאל
-//        for(int i=0;i<30;i++){
-//            temp=new Point(gamePanel.getPlayer2().getLowerLeft().getX(),gamePanel.getPlayer2().getLowerLeft().getY()-i);
-//            if(temp.distance(center)<=15)
-//            {isThereCollision = true;}
-//
-//            if(i<15) {
-//                temp = new Point(gamePanel.getPlayer2().getLowerLeft().getX() + i, gamePanel.getPlayer2().getLowerLeft().getY());
-//                if(temp.distance(center)<=15)
-//                { isThereCollision = true;}
-//                temp = new Point(gamePanel.getPlayer2().getLowerLeft().getX() - i, gamePanel.getPlayer2().getLowerLeft().getY()-30);
-//                if(temp.distance(center)<=15)
-//                { isThereCollision = true;}
-//
-//            }
-//        }
-//        if(isThereCollision){
-//            x=gamePanel.getPlayer2().getLowerLeft().getX()-1;
-//            center.setX((int)x+15);
-//            xVelocity=-5;
-//            yVelocity=2;
-//        }
-//        isThereCollision=false;
 
-//        if(gamePanel.getPlayer1().getLowerLeft().getX()>=x&&gamePanel.getPlayer1().getLowerLeft().getY()<=y+15&&gamePanel.getPlayer1().getUpperRight().getX()>=x&&gamePanel.getPlayer1().getLowerLeft().getY()<=y+15){
-//            if(center.getX()>gamePanel.getPlayer1().getUpperRight().getX()+15){
-//                x=gamePanel.getPlayer1().getLowerLeft().getX();
-//                center.setX((int)x+15);
-//                xVelocity=5;
-//                yVelocity=2;
-//            }else{
-//                x=gamePanel.getPlayer1().getUpperRight().getX()-30;
-//                center.setX((int)x+15);
-//                xVelocity=-5;
-//                yVelocity=2;
-//            }
-//        }
 
         //בדיקת התנגשות בתחתית
         if (y >= bottomBoundary - diameter) {

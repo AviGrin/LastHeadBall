@@ -85,6 +85,8 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -97,6 +99,8 @@ public class GamePanel extends JPanel {
     private JFrame newFrame;
     private int scoreOfPlayer1;
     private int scoreOfPlayer2;
+    private Timer gameTimer;
+    private int timeLeft = 10; // זמן המשחק
 
     public GamePanel() {
         newFrame = new JFrame("Game Start Screen");
@@ -141,7 +145,27 @@ public class GamePanel extends JPanel {
         player1.start();
         player2.start();
         //ball.run();
-        System.out.println(this.getWidth());
+        gameTimer = new Timer(1000, new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                timeLeft--;
+                if (timeLeft <= 0) {
+                    if(scoreOfPlayer1>scoreOfPlayer2){
+                        new WinPanel(1);
+                    }
+                    if(scoreOfPlayer1<scoreOfPlayer2){
+                        new WinPanel(2);
+                    }
+                    if(scoreOfPlayer1==scoreOfPlayer2){
+                        new WinPanel(0);
+                    }
+                    newFrame.dispose();
+                    gameTimer.stop();
+                }
+                repaint();
+            }
+        });
+        gameTimer.start();
     }
     public Player1 getPlayer1() {
         return player1;
@@ -157,6 +181,10 @@ public class GamePanel extends JPanel {
             scoreOfPlayer2++;
         }
 
+        player1.setGoalLocation();
+        player2.setGoalLocation();
+
+
     }
 
     @Override
@@ -170,6 +198,14 @@ public class GamePanel extends JPanel {
         player1.paintComponent(g);
         player2.paintComponent(g);
         ball.paintComponent(g);
+        g.setColor(Color.yellow);
+        g.setFont(new Font("Serifa",Font.PLAIN,96));
+        g.drawString(" "+ this.scoreOfPlayer2,20,80);
+        g.drawString(" "+ this.scoreOfPlayer1,800-130,80);
+        repaint();
+        g.setFont(new Font("BOLD",Font.PLAIN,46));
+        g.setColor(Color.white);
+        g.drawString("⏱" + timeLeft, 375-20, 50);
 
     }
 

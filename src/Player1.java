@@ -184,7 +184,7 @@ public class Player1 extends JComponent implements Runnable {
         leftBoundary = 70; // Adjust this value to set the left boundary
         rightBoundary = 800 - 80; // Adjust this value to set the right boundary
         groundLevel = (((800 * 2)/10))+15; // Fixed ground level
-        location=new Point(800- newHeight,groundLevel);
+        location=new Point(800- 60,groundLevel);
         centerOfTheHead=new Point(location.getX()+50, location.getY()+15);
         upperRight=new Point(location.getX()+35, location.getY()+30 );
         lowerLeft=new Point(location.getX()+65, location.getY()+60 );
@@ -268,6 +268,11 @@ public class Player1 extends JComponent implements Runnable {
             dy = 0;
             inAir = false;
         }
+
+    }
+    public void setGoalLocation(){
+        location.setX(800- 60);
+        centerOfTheHead.setX(centerOfTheHead.getX()+50);
 
     }
     //@Override

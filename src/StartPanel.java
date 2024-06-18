@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
 
 public class StartPanel {
+    private AudioPlayer audioPlayer;
 
     public StartPanel(GameFrame frame) {
         frame.setTitle("Game Start Screen");
@@ -32,6 +33,8 @@ public class StartPanel {
                 GamePanel gamePanel = new GamePanel();
             };
         });
+        audioPlayer = new AudioPlayer("Audio/אייל גולן מלך המגרש Eyal Golan (1).wav");
+        audioPlayer.play();
         frame.setVisible(true);
     }
 }
