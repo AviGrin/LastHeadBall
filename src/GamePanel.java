@@ -100,7 +100,7 @@ public class GamePanel extends JPanel {
     private int scoreOfPlayer1;
     private int scoreOfPlayer2;
     private Timer gameTimer;
-    private int timeLeft = 10; // זמן המשחק
+    private int timeLeft = 90; // זמן המשחק
 
     public GamePanel() {
         newFrame = new JFrame("Game Start Screen");

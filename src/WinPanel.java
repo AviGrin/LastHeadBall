@@ -15,7 +15,7 @@ public class WinPanel extends JPanel {
         newFrame.setLocationRelativeTo(null);
         newFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         newFrame.setResizable(false);
-        if(playerID==1){
+        if(playerID==2){
             System.out.println(5000);
             try {
                 backgroundImage = ImageIO.read(new File("images/red wins.jpg"));
@@ -23,7 +23,7 @@ public class WinPanel extends JPanel {
                 throw new RuntimeException(e);
             }
 
-        } else if (playerID==2){
+        } else if (playerID==1){
             try {
                 backgroundImage = ImageIO.read(new File("images/green wins.jpg"));
             } catch (IOException e) {
