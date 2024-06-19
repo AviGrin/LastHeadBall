@@ -297,6 +297,8 @@ public class Player1 extends JComponent implements Runnable {
             if (key == KeyEvent.VK_UP && !inAir) {
                 dy = -13;
                 inAir = true;
+                AudioPlayer audioPlayer = new AudioPlayer("Audio/Audio_jumppp11.wav");
+                audioPlayer.play();
             }
         }
 

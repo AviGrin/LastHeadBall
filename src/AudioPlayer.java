@@ -23,7 +23,7 @@ public class AudioPlayer {
     public void play() {
         if (clip != null && !clip.isRunning()) {
             clip.start();
-            clip.loop(Clip.LOOP_CONTINUOUSLY); // להשמיע בלופ מתמשך
+            //clip.loop(Clip.LOOP_CONTINUOUSLY); // להשמיע בלופ מתמשך
         }
     }
 
