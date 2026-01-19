@@ -26,7 +26,6 @@ public class AudioPlayer {
             //clip.loop(Clip.LOOP_CONTINUOUSLY); // להשמיע בלופ מתמשך
         }
     }
-
     public void stop() {
         if (clip != null && clip.isRunning()) {
             clip.stop();

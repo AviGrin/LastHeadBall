@@ -20,7 +20,7 @@
 //
 //        // Load background image
 //        try {
-//            backgroundImage = ImageIO.read(new File("images/backraundAfterPressed.jpg"));
+//            backgroundImage = ImageIO.read(new File("images/backroundAfterPressed.jpg"));
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //            System.exit(1);
@@ -102,8 +102,9 @@ public class GamePanel extends JPanel {
     private Timer gameTimer;
     private int timeLeft = 90; // זמן המשחק
 
-    public GamePanel() {
-        newFrame = new JFrame("Game Start Screen");
+    public GamePanel(GameFrame frame) {
+        newFrame = frame;
+        newFrame.setTitle("Game Start Screen");
         newFrame.setSize(800, 381);
         newFrame.setLocationRelativeTo(null);
         newFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -113,7 +114,7 @@ public class GamePanel extends JPanel {
 
         // Load background image
         try {
-            backgroundImage = ImageIO.read(new File("images/backraundAfterPressed.jpg"));
+            backgroundImage = ImageIO.read(new File("images/backroundAfterPressed.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);
@@ -150,6 +151,8 @@ public class GamePanel extends JPanel {
             public void actionPerformed(ActionEvent e) {
                 timeLeft--;
                 if (timeLeft <= 0) {
+                    newFrame.dispose();
+
                     if(scoreOfPlayer1>scoreOfPlayer2){
                         new WinPanel(1);
                     }
@@ -159,7 +162,6 @@ public class GamePanel extends JPanel {
                     if(scoreOfPlayer1==scoreOfPlayer2){
                         new WinPanel(0);
                     }
-                    newFrame.dispose();
                     gameTimer.stop();
                 }
                 repaint();
@@ -220,7 +222,5 @@ public class GamePanel extends JPanel {
         return resizedImage;
     }
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(GamePanel::new);
-    }
+
 }

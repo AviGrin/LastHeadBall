@@ -20,7 +20,7 @@
 //
 //        // Load background image
 //        try {
-//            backgroundImage = ImageIO.read(new File("images/backraundAfterPressed.jpg"));
+//            backgroundImage = ImageIO.read(new File("images/backroundAfterPressed.jpg"));
 //        } catch (IOException e) {
 //            e.printStackTrace();
 //            System.exit(1);
@@ -105,7 +105,7 @@ public class GamePanel extends JPanel {
 
         // Load background image
         try {
-            backgroundImage = ImageIO.read(new File("images/backraundAfterPressed.jpg"));
+            backgroundImage = ImageIO.read(new File("images/backroundAfterPressed.jpg"));
         } catch (IOException e) {
             e.printStackTrace();
             System.exit(1);
